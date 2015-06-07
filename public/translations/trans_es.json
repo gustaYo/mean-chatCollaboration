@@ -1,0 +1,23 @@
+{
+    "TITLE": "Hola mundo",
+    "LENGUAJES": "Idioma",
+    "HOME": "Inicio",
+    "EMAIL": "Correo",
+    "USER": "Usuario",
+    "LOGOUT": "Salir",
+     "LOGUIN": "Entrar",
+    "email": {
+        "e": "Bandeja entrada",
+        "s": "Bandeja salida",
+        "b": "Borrador",
+        "p": "Papelera",
+        "r": "Redactar",
+        "redacta": {
+            "send": "Para",
+            "subject": "Asunto",
+            "enviar": "Enviar",
+            "cancelar": "Cancelar",
+            "borrador": "Borrador"
+        }
+    }
+}

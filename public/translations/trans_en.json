@@ -1,0 +1,24 @@
+{
+    "TITLE": "HELLO WORD",
+    "LENGUAJES": "Language", 
+    "HOME": "Inicio",
+    "EMAIL": "Email",
+    "USER": "User",
+    "LOGOUT": "Logout",
+    "LOGUIN": "Loguin",
+    "email": {
+        "e": "Inbox",
+        "s": "Outbox",
+        "b": "Draft",
+        "p": "Bin",
+        "r": "Write",
+        "redacta": {
+            "send": "Send",
+            "subject": "Subject",
+            "enviar": "Send",
+            "cancelar": "Cancel",
+            "borrador": "Draft"
+        }
+    }
+
+}

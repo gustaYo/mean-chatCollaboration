@@ -1,0 +1,43 @@
+<div class="col-md-12 body-text-redacta" >
+    <form ng-submit="enviar_email()">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{{ 'email.'+carp_name | translate }}</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex2-collapse">
+                <button class="btn btn-default navbar-btn" ng-disabled="!email.body" type="submit">{{ 'email.redacta.enviar' | translate }}</button>
+                <button type="button" class="btn btn-default navbar-btn"  ng-click="cancela()">{{ 'email.redacta.cancelar' | translate }}</button>
+                <button type="button" class="btn btn-default navbar-btn" ng-disabled="!email.body" ng-click="borrador()">{{ 'email.redacta.borrador' | translate }}</button>
+            </div>
+        </nav>
+        <div class="input-group">
+            <span class="input-group-addon" style="min-width: 100px">{{ 'email.redacta.send' | translate }}</span>
+            <tags-input ng-model="emails" placeholder="email">
+                <auto-complete source="loadTags($query)"></auto-complete>
+            </tags-input>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" style="min-width: 100px">{{ 'email.redacta.subject' | translate }}</span>
+            <input type="text" class="form-control" placeholder="Asunto" ng-model="email.subject" required>
+        </div>
+        <!--
+        <div class="input-group">
+            <span class="input-group-addon" style="min-width: 100px">Cc</span>
+            <input type="text" class="form-control" placeholder="Copia de correo" >
+        </div>
+        -->
+        <div ng-cloak ng-hide="isReady" class="highlight">
+            Initialising ...
+        </div>
+        <div ng-cloak ng-show="isReady">
+            <textarea class="form-control" rows="3" ckeditor="editorOptions" name="editor" ng-model="email.body" ng-change="save()"></textarea>
+        </div>
+    </form>
+</div>
+

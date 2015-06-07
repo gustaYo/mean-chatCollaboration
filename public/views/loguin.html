@@ -1,0 +1,54 @@
+
+<!-- Custom styles for this template -->
+<link href="styles/loguin/css/login.css" rel="stylesheet">
+<link href="styles/loguin/css/animate-custom.css" rel="stylesheet">
+<!-- start Login box -->
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+
+            <div class="login-box clearfix animated flipInY">
+                <div class="page-icon animated bounceInDown">
+                    <img class="img-responsive rotate-icon" src="styles/loguin/img/login-key-icon.png" alt="Key icon">
+                </div>
+                <div class="login-logo">
+                    <a href="#"><img src="styles/loguin/img/login-logo.png" alt="Company Logo"></a>
+                </div> 
+                <hr>
+                <div class="login-form">
+                    <div class="alert alert-error" ng-show="error != ''">
+                        <button type="button" class="close" ng-click="error = ''">×</button>
+                        <h4>Error!</h4>
+                        {{ error}}
+                    </div>
+                    <form ng-submit="loguinUser()">
+                        <input placeholder="User name" class="input-field" required="" type="text" ng-model="usuario.username">  
+                        <input placeholder="Password" class="input-field" required="" type="password" ng-model="usuario.password"> 
+                        <label class="checkbox">
+                            <input ng-model="usuario.recordar" type="checkbox"> Recordar
+                        </label>
+                        <button type="submit" class="btn btn-login">Login</button> 
+                    </form>	
+                    <div class="login-links"> 
+                        <a ui-sref="reset_password">
+                            Forgot password?
+                        </a>
+                        <br>
+                        <a ui-sref="register_user">
+                            Don't have an account? <strong>Sign Up</strong>
+                        </a>
+                    </div>      		
+                </div> 			        	
+            </div>
+
+            <div class="social-login row">
+                <div class="fb-login col-lg-6 col-md-12 animated flipInX">
+                    <a href="#" class="btn btn-facebook btn-block">Connect with <strong>Facebook</strong></a>
+                </div>
+                <div class="twit-login col-lg-6 col-md-12 animated flipInX">
+                    <a href="#" class="btn btn-twitter btn-block">Connect with <strong>Twitter</strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

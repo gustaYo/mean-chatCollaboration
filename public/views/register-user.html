@@ -1,0 +1,42 @@
+<!-- Custom styles for this template -->
+<link href="styles/loguin/css/login.css" rel="stylesheet">
+<link href="styles/loguin/css/animate-custom.css" rel="stylesheet">
+<div class="container" id="login-block">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+
+            <div class="login-box clearfix animated flipInY">
+                <div class="page-icon animated bounceInDown">
+                    <img src="styles/loguin/img/login-user-icon.png" alt="User icon">
+                </div>
+                <div class="login-logo">
+                    <a href="#"><img src="styles/loguin/img/login-logo.png" alt="Company Logo"></a>
+                </div> 
+                <hr>
+                <div class="login-form">
+                    <div class="alert alert-error" ng-show="error!=''">
+                        <button type="button" class="close" ng-click="error=''">×</button>
+                        <h4>Error!</h4>
+                       {{ error }}
+                    </div>
+                    <form ng-submit="registerUser()">		        			
+                        <input placeholder="nick" class="input-field" required="" type="text" ng-model="usuario.username"> 
+                        <input placeholder="E-mail" class="input-field" required="" type="email" ng-model="usuario.email"> 
+                        <input placeholder="Password" class="input-field" required="" type="password" ng-model="usuario.password">  
+                        <input placeholder="Confirm Password" class="input-field" required="" type="password">                       
+                        <button type="submit" class="btn btn-login" >Sign Up </button> 
+                    </form>	
+                    <div class="login-links"> 
+                        <a ui-sref="reset_password">
+                            Forgot password?
+                        </a>
+                        <br>
+                        <a ui-sref="loguin">
+                            Already have an account?  <strong>Sign In</strong>
+                        </a>
+                    </div>      		
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

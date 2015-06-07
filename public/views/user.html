@@ -1,0 +1,64 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Datos de usuario</h3>
+    </div>
+    <div class="panel-body">
+        <div class="media">
+            <a class="pull-left" href="">
+                <img class="media-object" src="images/yeoman.png" alt="...">
+            </a>
+            <div class="media-body">
+                <div ng-controller="TabsDemoCtrl">
+                    <tabset justified="true">
+                        <tab heading="Datos de usuario">
+                            <div class="panel panel-default">
+                                <form role="form" name="signup_form">
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-6">
+                                            <label>Nombre </label>
+                                            <input type="text" ng-model="usuario.name" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Apellidos</label>
+                                            <input type="text" ng-model="usuario.apellidos" tooltip="apellidos"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" />
+                                        </div>
+                                        <div class="form-group col-md-6" ng-class="{'has-error' : !usuario.nick}">
+                                            <label>Usuario:</label>
+                                            <input ng-minlength=4  ng-maxlength=15  type="text" ng-model="usuario.nick" class="form-control"
+                                                   placeholder="Usuario"
+                                                   tooltip="Entre usuario mas de 4 caracteres"
+                                                   tooltip-placement="top"
+                                                   tooltip-trigger="mouseenter"
+                                                   tooltip-enable="!usuario.nick" />
+                                        </div>
+                                        <div class="form-group col-md-6" ng-class="{'has-error' : !usuario.email}">
+                                            <label>Email</label>
+                                            <input  type="email" ng-model="usuario.email" class="form-control"
+                                                    placeholder="email"
+                                                    tooltip="Entre email"
+                                                    tooltip-placement="top"
+                                                    tooltip-trigger="mouseenter"
+                                                    tooltip-enable="!usuario.email" />
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Pais </label>
+                                            <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="#" class="btn btn-default" ng-disabled="!usuario.nick || !usuario.name" ng-click="saveRegisterUser">Guardar</a>
+                                            <a href="#" class="btn btn-default">Cancelar</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </tab>
+                        <tab heading="SJ">Short Labeled Justified content</tab>
+                        <tab heading="Long Justified">Long Labeled Justified content</tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+
+
+<div class="col-md-12 column" ng-controller="RowClickEventCtrl as showCase">
+    <div class="alert alert-warning fade in" ng-show="error_show">
+        <button type="button" class="close" ng-click="error_show = false">×</button>
+        <strong>Error</strong> {{error}}
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span>{{ 'email.' + carp_name | translate }} </span>
+            <div class="btn-group" style="float: right">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default" ng-click="showCase.deleteSelect()">Eliminar</button>
+                    <button type="button" class="btn btn-default">Middle</button>
+                    <button type="button" class="btn btn-default">Right</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Acciones <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a >Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="text-danger" style="display: none">You selected the following rows: <strong>{{ showCase.selected}}</strong></p>
+        <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs" class="row-border hover">
+            <thead>
+                <tr>
+                    <th class="td_chekbox_select"><input type="checkbox" ng-click="showCase.toogleAll()"></th>
+                    <th>subject</th>
+                    <th>state</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="no_leido" ng-repeat="email in showCase.emails" ng-click="showEmail(email)"  ng-class="showCase.state" >
+                    <td class="td_chekbox_select"  ><input type="checkbox" ng-model="showCase.seleccionados[email._id]" ng-click="showCase.selectMy(email)"></td>
+                    <td>{{ email.email.Subject}}</td>
+                    <td>{{ email.state}}</td>
+                    <td>{{ email.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row clearfix">
+        <div class="panel panel-default" ng-show="email.email.Subject">
+            <div class="panel-heading"><span class="label label-default">Asunto:</span> {{ email.email.Subject}}  <span class="label label-default">  De:</span> {{ email.email.FromName}}   <span class="label label-default">  Fecha:</span> {{ email.email.date | date : format : fullDate}} <button style="float: right" ng-click="showCase.reenviar(email)" class="btn">Reenviar</button></div>
+            <div class="panel-body col-md-12" style="overflow: auto;max-height: 200px" ng-bind-html="email.email.Body">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+

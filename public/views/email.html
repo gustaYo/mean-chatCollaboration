@@ -1,0 +1,41 @@
+
+<div class="panel  panel-primary">
+    <div class="panel-heading">Email</div>
+    <div class="panel-body">
+        <div class="col-md-3 column">
+            <ul class="list-group">
+                <li class="list-group-item">                  
+                    <a href="#/email/redact/new">{{ 'email.r' | translate }}</a>   
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">14</span>
+                    <a href="#/email/e">{{ 'email.e' | translate }}</a>   
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">2</span>
+                    <a href="#/email/s" >{{ 'email.s' | translate }}</a>  
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">1</span>
+                    <a href="#/email/b">{{ 'email.b' | translate }}</a>  
+                </li>
+                <li class="list-group-item">
+                    <span class="badge">1</span>
+                    <a href="#/email/p">{{ 'email.p' | translate }}</a>  
+                </li>
+            </ul>
+        </div>
+        <div ui-view="breadcrumb"></div>
+        <div class="col-md-9 column">
+
+            <div class="row clearfix">
+                <div class="row clearfix">
+                    <!--http://angular-transitions.mgechev.com/#/view/page1 -->
+                    <!-- Our unnamed main ui-view for this template -->
+                    <div ui-view  class="at-view-scale-in at-view-fade-out"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">Panel footer</div>
+</div>
