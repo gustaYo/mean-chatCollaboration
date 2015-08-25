@@ -3,15 +3,17 @@
 /**
  * Module dependencies.
  */
-var Email = {}, UserEmail = {};
-var mongoose = require('mongoose'),
-        Email = mongoose.model('emails');
-UserEmail = mongoose.model('useremails');
-var fs = require('fs');
+ var Email = {}, UserEmail = {};
+ var mongoose = require('mongoose'),
+ Email = mongoose.model('emails');
+ UserEmail = mongoose.model('useremails');
+ var fs = require('fs');
+
+ var path = require('path');
 /**
  * insertEmail
  */
-exports.insertEmail = function(req, res) {
+ exports.insertEmail = function(req, res) {
     req.body.FromName = req.user.email;
     var email = new Email(req.body);
     var values_insert = new Array();
@@ -56,7 +58,7 @@ exports.insertEmail = function(req, res) {
 /**
  * DeleteEmailUser
  */
-exports.DeleteEmailUser = function(req, res) {
+ exports.DeleteEmailUser = function(req, res) {
     var emails = req.params.parms;
     emails = JSON.parse(emails)
     var ides = new Array();
@@ -70,27 +72,27 @@ exports.DeleteEmailUser = function(req, res) {
 /**
  * UploadFiles
  */
-exports.UploadFiles = function(req, res) {
+ exports.UploadFiles = function(req, res) {
 
     var oldPath = req.files.myFile.path;
 
     var separator = '/';
-    var filename = oldPath.split(separator)[oldPath.split(separator).length - 1];
-    var newPath = [__dirname, '..', '..', 'public', 'uploads', filename].join(separator);
+    var currentTime = new Date();
+    var curTime = new Date();
+    var curTime = curTime.getTime();
+    var filename = curTime+'--'+req.files.myFile.name;
+    var newPath = [path.resolve('./public'), 'uploads', filename].join(separator);
 
     console.log('>>>>>');
-    console.log('__dirname', __dirname);
     console.log('oldPath', oldPath);
     console.log('newPath: ', newPath);
     console.log('filename: ', filename);
-
     var file = {
         modificationDate: req.files.myFile.modifiedDate || new Date(),
         name: req.files.myFile.name || "???",
         size: req.files.myFile.size || 0,
         type: req.files.myFile.type || "???",
         filename: filename
-
     };
     fs.rename(oldPath, newPath, function(err) {
         if (err === null) {
@@ -102,53 +104,47 @@ exports.UploadFiles = function(req, res) {
             return res.send(retObj);
         }
     });
-
-
 }
-
-
-
 
 /**
  * EmailsUser
  */
-exports.EmailsUser = function(req, res) {
+ exports.EmailsUser = function(req, res) {
     UserEmail
-            .find({user: req.user.email, bandeja: req.params.parms})
-            .populate('email')
-            .exec(function(err, emaillist) {
-                if (err)
-                    return handleError(err);
-                res.status(200).send(emaillist);
-            })
-
+    .find({user: req.user.email, bandeja: req.params.parms})
+    .populate('email')
+    .exec(function(err, emaillist) {
+        if (err)
+            return handleError(err);
+        res.status(200).send(emaillist);
+    })
 }
 
 var UpdateBandejaEmails = function(ids, bandeja, req, res) {
     UserEmail
-            .update(
-                    {_id: {$in: ids}},
-            {$set: {
-                    bandeja: bandeja,
-                }
-            },
-            {multi: true},
-            function(err) {
-                if (err) {
-                    console.log('errorrr')
-                    return res.send(500, err.message);
-                }
-                else
-                    res.status(200).jsonp('ok');
-            });
+    .update(
+        {_id: {$in: ids}},
+        {$set: {
+            bandeja: bandeja,
+        }
+    },
+    {multi: true},
+    function(err) {
+        if (err) {
+            console.log('errorrr')
+            return res.send(500, err.message);
+        }
+        else
+            res.status(200).jsonp('ok');
+    });
 }
 var DeleteMultipleEmail = function(ids, req, res) {
     UserEmail
-            .remove({_id: {$in: ids}}, function(error) {
-                if (error) {
-                    return res.send(500, error.message);
-                } else {
-                    res.status(200).jsonp('ok');
-                }
-            });
+    .remove({_id: {$in: ids}}, function(error) {
+        if (error) {
+            return res.send(500, error.message);
+        } else {
+            res.status(200).jsonp('ok');
+        }
+    });
 }

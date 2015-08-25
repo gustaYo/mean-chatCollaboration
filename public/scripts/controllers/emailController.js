@@ -45,7 +45,6 @@ function events_redacta($http, $scope, myNick, $location, Email) {
     $scope.borrador = function() {
         state = 'borr'
         $scope.enviar_email();
-
         $location.url("/email/e");
     }
     $scope.enviar_email = function() {

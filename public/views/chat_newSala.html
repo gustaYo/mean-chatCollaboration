@@ -1,0 +1,17 @@
+    <div class="panel-body">
+        <div class="form-group col-md-12" ng-class="{'has-error' : !sala.name}">
+            <label>Nombre:</label>
+            <input type="text" ng-model="sala.name" class="form-control"/>
+        </div>
+        <div class="form-group col-md-12">
+            <label>Descripcion</label>
+            <textarea class="form-control" rows="3" ng-model="sala.description"></textarea>
+        </div> 
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group btn-group-justified">
+         <a href="#" class="btn btn-default" ng-click="addSala()">Guardar</a>
+         <a href="#" class="btn btn-default" ng-click="cancel()">Cancelar</a>
+          </div>
+      </div>
+  </div>

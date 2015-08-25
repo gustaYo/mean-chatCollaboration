@@ -1,0 +1,49 @@
+ <!-- Modal -->
+  <div class="modal fade" id="create-game" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+        <div>
+         <div class="row">
+    <div class="input-group">
+  <span class="input-group-addon">Usuario</span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+ </div>
+         <div class="row">
+        <label>Partida</label>
+          <div class="btn-group">
+        <label class="btn btn-primary" ng-model="partida.type" btn-radio="'Publica'">Publica</label>       
+        <label class="btn btn-primary" ng-model="partida.type" btn-radio="'Privada'">Privada</label>
+    </div>
+    </div>
+
+      <div class="row">
+      <label>Color</label>
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="partida.color" btn-radio="'Blancas'">Blancas</label>
+        <label class="btn btn-primary" ng-model="partida.color" btn-radio="'Negras'">Negras</label>
+        <label class="btn btn-primary" ng-model="partida.color" btn-radio="'Aleatorio'">Aleatorio</label>
+    </div>
+        </div>
+         <div class="row">
+      <label>Tiempo</label>
+    <div class="btn-group">
+        <label class="btn btn-primary" ng-model="partida.time" btn-radio="'3'">3 minutos</label>
+        <label class="btn btn-primary" ng-model="partida.time" btn-radio="'5'">5 minutos</label>
+        <label class="btn btn-primary" ng-model="partida.time" btn-radio="'10'">10 minutos</label>
+    </div>
+        </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

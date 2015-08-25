@@ -8,7 +8,7 @@ angular.element(document).ready(function() {
     angular.bootstrap(document, ['myapp']);
 });
 
-var myapp = angular.module('myapp', ["uiRouter.email", "uiRouter.loguin", "uiRouter.chat", "ui.router", "datatables", 'ngResource', 'ngCkeditor', 'ngTagsInput', 'ngSanitize', 'ngAnimate', 'pascalprecht.translate', 'ngCookies', 'LocalStorageModule', 'ui.bootstrap','angularFileUpload']);
+var myapp = angular.module('myapp', ["uiRouter.email", "uiRouter.loguin",'app.chess', "uiRouter.chat", "ui.router", "datatables", 'ngResource', 'ngCkeditor', 'ngTagsInput', 'ngSanitize', 'ngAnimate', 'pascalprecht.translate', 'ngCookies', 'LocalStorageModule', 'ui.bootstrap','angularFileUpload']);
 var translation = new Array()
 angular.module('myapp').run(
         ['$rootScope', '$state', '$stateParams',

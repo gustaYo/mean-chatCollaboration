@@ -6,6 +6,7 @@
     "USER": "User",
     "LOGOUT": "Logout",
     "LOGUIN": "Loguin",
+    "CHESS": "Chess",
     "email": {
         "e": "Inbox",
         "s": "Outbox",

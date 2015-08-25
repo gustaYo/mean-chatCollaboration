@@ -1,0 +1,22 @@
+ 
+<div class="list-group" style="height: 280px; overflow: auto">
+<div ng-repeat="sala in salas| filter: buscador">
+	<a class="list-group-item"  ng-click="tabActiveUser(sala, true,true)">
+		<h4 class="list-group-item-heading">{{ sala.name }}</h4>
+		<p class="list-group-item-text">{{ sala.description }}</p>	
+	</a>
+		<div class="btn-group" style="position:relative; top:-60px; right:1px; float : right" ng-if="sala.create==user.username">
+		<div class="btn-group">
+          <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            Config <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu">
+            <li><a ng-click="editSala(sala)">Editar</a></li>
+            <li><a ng-click="deleteSala(sala)">Eliminar</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>			
+			</div>
+</div>	
+</div>

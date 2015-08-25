@@ -21,6 +21,7 @@ controllers = {
 
     user: require('./users.server.controller'),
     email: require('./email.server.controller'),
+     chat: require('./chat.server.controller'),
 };
 module.exports = controllers;
 

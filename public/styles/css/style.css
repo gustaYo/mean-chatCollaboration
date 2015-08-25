@@ -1,3 +1,7 @@
+.tab_contn .popover_chat .arrow{
+    top: 25px !important;
+}
+
    .img-avatar {
         width: 40px;
         float: right;
@@ -24,7 +28,7 @@
     }
 
     label.filebutton {
-        z-index: 3000;
+        z-index: 10;
         // width:120px;
         //   height:40px;
         overflow:hidden;
@@ -33,7 +37,7 @@
     }
 
     label span input {
-        z-index: 999;
+        z-index: 5;
         line-height: 0;
         //  font-size: 50px;
         position: absolute;
@@ -49,8 +53,9 @@
     }
 
     .tab_contn{
-        height: 200px;
-        overflow: auto;       
+      /*  height: 200px;*/
+        overflow: auto;
+        overflow-x:hidden;     
     }
     .delete_tab{
         padding-left: 3px

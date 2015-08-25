@@ -1,16 +1,19 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 port = 3001;
 var express = require('express'),
-        morgan = require('morgan'),
-        bodyParser = require('body-parser'),
-        session = require('express-session'),
-        methodOverride = require('method-override'),
-        cookieParser = require('cookie-parser'),
-        path = require('path'),
-        flash = require('connect-flash'),
-        connect = require('connect')
-        passport = require('passport');
-        var io      = require("socket.io");
+morgan = require('morgan'),
+bodyParser = require('body-parser'),
+session = require('express-session'),
+methodOverride = require('method-override'),
+cookieParser = require('cookie-parser'),
+path = require('path'),
+flash = require('connect-flash'),
+connect = require('connect')
+passport = require('passport');
+var io      = require("socket.io");
+var easyrtc = require("easyrtc"); 
+
+var http    = require("http");  
 var app = express();
 
 // Enable logger (morgan)
@@ -71,10 +74,14 @@ app.use(passport.session());
 
 // Bootstrap application
 
-var webServer=app.listen(port);
+// Start Express http server on port 
+var webServer = http.createServer(app).listen(port);
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer, {"log level":1});
+
+// Start EasyRTC server
+var rtc = easyrtc.listen(app, socketServer);
 
 // Configure routing
 require('./app/routes')(app, express,socketServer);

@@ -12,14 +12,16 @@ angular.module('myapp')
                 console.log("user conectado")
             });
             var myNick = window.user != null ? window.user.username : '';
-            if (myNick != '') {
+          
+            _this.start=function(){
+                 if (myNick != '') {
                 socket.emit('nickname', myNick, function(nick) {
                     window.user.myNick = nick;
                 });
+            }       
             }
-            _this.socket = {
-                socket: socket
-            };
-            return _this.socket;
+            _this.start();
+            _this.socket = socket;
+            return _this;
         })
 

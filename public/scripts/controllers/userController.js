@@ -24,7 +24,6 @@ function userController($scope, $window, $http, $location, Authentication) {
             $scope.error = response.message;
         });
     }
-
     $scope.loguinUser = function() {
         $http.post('/auth/signin', $scope.usuario).success(function(response) {
             //If successful we assign the response to the global user model

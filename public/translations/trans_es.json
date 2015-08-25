@@ -5,7 +5,8 @@
     "EMAIL": "Correo",
     "USER": "Usuario",
     "LOGOUT": "Salir",
-     "LOGUIN": "Entrar",
+    "LOGUIN": "Entrar",
+    "CHESS": "Ajedres",
     "email": {
         "e": "Bandeja entrada",
         "s": "Bandeja salida",

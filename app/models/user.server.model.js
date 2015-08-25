@@ -35,7 +35,12 @@ exports = module.exports = function(mongoose) {
         created: {
             type: Date,
             default: Date.now
-        }
+        },
+        convAbiertas: {
+            type: Array,
+            default: ['all']
+        },
+
     });
 
 // Hook a pre save method to hash the password
