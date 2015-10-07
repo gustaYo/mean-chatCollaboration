@@ -3,17 +3,17 @@
 /**
  * Module dependencies.
  */
- var Email = {}, UserEmail = {};
- var mongoose = require('mongoose'),
- Email = mongoose.model('emails');
- UserEmail = mongoose.model('useremails');
- var fs = require('fs');
+var Email = {}, UserEmail = {};
+var mongoose = require('mongoose'),
+        Email = mongoose.model('emails');
+UserEmail = mongoose.model('useremails');
+var fs = require('fs');
 
- var path = require('path');
+var path = require('path');
 /**
  * insertEmail
  */
- exports.insertEmail = function(req, res) {
+exports.insertEmail = function(req, res) {
     req.body.FromName = req.user.email;
     var email = new Email(req.body);
     var values_insert = new Array();
@@ -58,7 +58,7 @@
 /**
  * DeleteEmailUser
  */
- exports.DeleteEmailUser = function(req, res) {
+exports.DeleteEmailUser = function(req, res) {
     var emails = req.params.parms;
     emails = JSON.parse(emails)
     var ides = new Array();
@@ -72,7 +72,7 @@
 /**
  * UploadFiles
  */
- exports.UploadFiles = function(req, res) {
+exports.UploadFiles = function(req, res) {
 
     var oldPath = req.files.myFile.path;
 
@@ -80,8 +80,8 @@
     var currentTime = new Date();
     var curTime = new Date();
     var curTime = curTime.getTime();
-    var filename = curTime+'--'+req.files.myFile.name;
-    var newPath = [path.resolve('./public'), 'uploads', filename].join(separator);
+    var filename = curTime + '--' + req.files.myFile.name;
+    var newPath = [__dirname, '../../public', 'uploads', filename].join(separator);
 
     console.log('>>>>>');
     console.log('oldPath', oldPath);
@@ -109,42 +109,42 @@
 /**
  * EmailsUser
  */
- exports.EmailsUser = function(req, res) {
+exports.EmailsUser = function(req, res) {
     UserEmail
-    .find({user: req.user.email, bandeja: req.params.parms})
-    .populate('email')
-    .exec(function(err, emaillist) {
-        if (err)
-            return handleError(err);
-        res.status(200).send(emaillist);
-    })
+            .find({user: req.user.email, bandeja: req.params.parms})
+            .populate('email')
+            .exec(function(err, emaillist) {
+                if (err)
+                    return handleError(err);
+                res.status(200).send(emaillist);
+            })
 }
 
 var UpdateBandejaEmails = function(ids, bandeja, req, res) {
     UserEmail
-    .update(
-        {_id: {$in: ids}},
-        {$set: {
-            bandeja: bandeja,
-        }
-    },
-    {multi: true},
-    function(err) {
-        if (err) {
-            console.log('errorrr')
-            return res.send(500, err.message);
-        }
-        else
-            res.status(200).jsonp('ok');
-    });
+            .update(
+                    {_id: {$in: ids}},
+            {$set: {
+                    bandeja: bandeja,
+                }
+            },
+            {multi: true},
+            function(err) {
+                if (err) {
+                    console.log('errorrr')
+                    return res.send(500, err.message);
+                }
+                else
+                    res.status(200).jsonp('ok');
+            });
 }
 var DeleteMultipleEmail = function(ids, req, res) {
     UserEmail
-    .remove({_id: {$in: ids}}, function(error) {
-        if (error) {
-            return res.send(500, error.message);
-        } else {
-            res.status(200).jsonp('ok');
-        }
-    });
+            .remove({_id: {$in: ids}}, function(error) {
+                if (error) {
+                    return res.send(500, error.message);
+                } else {
+                    res.status(200).jsonp('ok');
+                }
+            });
 }

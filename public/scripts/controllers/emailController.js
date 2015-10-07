@@ -7,14 +7,12 @@
  * # EmailCtrl
  * Controller of the myApp
  */
-angular.module('myapp').controller('appController', appController);
+angular.module('Module.email').controller('appController', appController);
 function appController($scope, $location) {
-    if (window.user == null) {
-        $location.path('/')
-    }
+   
 }
 var email_temp = {}
-angular.module('myapp').controller('redactaController', redactaController);
+angular.module('Module.email').controller('redactaController', redactaController);
 
 function redactaController($scope, $location, $http, $stateParams, Email) {
     var myNick = 'yo'
@@ -94,20 +92,14 @@ function events_redacta($http, $scope, myNick, $location, Email) {
 //        ]
     };
 }
-angular.module('myapp')
+angular.module('Module.email')
         .controller('RowClickEventCtrl', RowClickEventCtrl);
 
 
-function RowClickEventCtrl($scope, $location, $stateParams, DTOptionsBuilder, DTColumnDefBuilder, Email) {
+function RowClickEventCtrl($scope, $location, $stateParams, Email) {
     $scope.carp_name = $stateParams.data;
     var vm = this;
     vm.emails = [];
-    vm.dtOptions = DTOptionsBuilder.newOptions().withPaginationType('full_numbers').withDisplayLength(5);
-    vm.dtColumnDefs = [
-        DTColumnDefBuilder.newColumnDef(0).notSortable()
-    ];
-
-// mejorado usando service
     Email.list_emails($('#data-user-email').attr('email'), function(emails) {
         vm.emails = emails;
     });

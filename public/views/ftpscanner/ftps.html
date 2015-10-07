@@ -1,0 +1,96 @@
+<tabset justified="true">
+    <tab heading="Scanner ftps">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Panel heading</div>
+            <div class="panel-body">
+                <div ng-controller="ftpController as filesFtp">
+                    <table style="width: 100%" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name
+                                </th><th>extname
+                                </th><th>Ftp
+                                </th></tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="file in filesFtp.ftpFiles">
+                                <td ><a target="blanck_" href="ftp://{{ filesFtp.serverSelec[file.ftp].uri+'/'+ file.directory+'/'+file.name }}">{{ file.name }}</a> </td>   
+                                <td > {{ file.extname }}</td>
+                                <td > <a target="blanck_" href="ftp://{{ filesFtp.serverSelec[file.ftp].uri+'/'+ file.directory }}">{{ filesFtp.serverSelec[file.ftp].name }}</a></td>
+                            </tr>                      
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="name" ng-model="filter.name" ng-keyup="filterTable()">
+                        </div>
+                        </th>
+                        <th>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" placeholder="extname" ng-model="filter.extname" ng-keyup="filterTable()">
+                        </div>
+                        </th>
+                        <th>
+                        <multiselect ng-model="ftpsFilter" options="c.name for c in servers" data-multiple="true" scroll-after-rows="5" filter-after-rows="5"></multiselect>
+                        </th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </tab>
+    <tab heading="Configurar listado de ftps" active>
+        <div class="panel panel-default" ng-controller="ftpsCtrl as ftpc">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Listado de ftps <button type="button" class="btn btn-default btn-sm" style="float: right" ng-click="addFtpServer()"><span class="glyphicon glyphicon-book"></span> Nuevo</button></div>
+            <div class="panel-body">
+                <div>
+                    <table  class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 20px !important">ID</th>
+                                <th>Nombre</th>
+                                <th>User</th>
+                                <th>Password</th>
+                                <th>uri</th>
+                                <th>dirscan</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ftp in ftpc.ftps">
+                                <td style="width: 20px !important"> {{ $index }}</td>
+                                <td><p style="display: none">{{ ftp.name }}</p><input type="text" ng-model="ftp.name" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" placeholder="php"/></td>
+                                <td><input type="text" ng-model="ftp.user" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" placeholder="user"/></td>
+                                <td><input type="text" ng-model="ftp.pass" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" /></td>
+                                <td><input type="text" ng-model="ftp.uri" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" placeholder="uri"/></td>
+                                <td><input type="text" ng-model="ftp.dirscan" tooltip="name"  tooltip-trigger="focus" tooltip-placement="top" class="form-control" placeholder="./PHP"/></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Acciones <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">                                            
+                                            <li><a ng-click="updateFtp(ftp)">Actualizar</a></li>
+                                            <li><a ng-click="scannerFTP(ftp._id)">Iniciar scanner</a></li>
+                                            <li class="divider"></li>
+                                            <li><a ng-click="eliminarFtp(ftp)">Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Table -->
+
+        </div>
+    </tab>
+</tabset>
+

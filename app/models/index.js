@@ -5,5 +5,6 @@ module.exports = function(mongoose) {
     require('./user-email.server.model')(mongoose);
     require('./sala.server.model')(mongoose);
     require('./log.server.model')(mongoose);
+    require('./ftp.server.model')(mongoose);
 }
 

@@ -87,10 +87,13 @@ var rtc = easyrtc.listen(app, socketServer);
 require('./app/routes')(app, express,socketServer);
 
 // Setting the app router and static folder
-app.use(express.static(path.resolve('./public')));
+//app.use(express.static(path.resolve('./public')));
+app.use(express.static(__dirname + '/public'));
+console.log(__dirname + '/public');
+
 
 // Bootstrap passport config
 var passport = require('./config/passport')();
 
 // Tell developer about it
-console.log('Server running at http://:' + app.get('ipaddr') + ':' + app.get('port'));
+console.log('Server running at http://' + app.get('ipaddr') + ':' + app.get('port'));

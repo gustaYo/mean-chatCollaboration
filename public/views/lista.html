@@ -29,9 +29,11 @@
             </div>
         </div>
         <p class="text-danger" style="display: none">You selected the following rows: <strong>{{ showCase.selected}}</strong></p>
-        <table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs" class="row-border hover">
+        <table class="table row-border hover">
+            <!-- problema con datatables no imprescindible-->
+        <!--<table datatable="ng" dt-options="showCase.dtOptions" dt-column-defs="showCase.dtColumnDefs" class="row-border hover">-->
             <thead>
-                <tr>
+                <tr style="background-color: #337ab7">
                     <th class="td_chekbox_select"><input type="checkbox" ng-click="showCase.toogleAll()"></th>
                     <th>subject</th>
                     <th>state</th>

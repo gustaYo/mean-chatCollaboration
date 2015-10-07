@@ -1,7 +1,37 @@
 crypto = require('crypto')
 exports = module.exports = function(mongoose) {
-
     Schema = mongoose.Schema;
+//    var usuario_grupo = new Schema({
+//        alias: {
+//            type: String,
+//            default: "",
+//        },
+//        username: {
+//            type: String,
+//        },
+//        created: {
+//            type: Date,
+//            default: Date.now
+//        }
+//    });
+//    var grupo = new Schema({
+//        name: {
+//            type: String,
+//            default: "constacts",
+//            trim: true,
+//            sparse: true,
+//            unique: false // super importante 
+//        },
+//        open: {
+//            type: Boolean,
+//            default: true
+//        },
+//        created: {
+//            type: Date,
+//            default: Date.now
+//        },
+//        users: [usuario_grupo]
+//    })
 
     var UserSchema = new Schema({
         firstName: String,
@@ -20,7 +50,7 @@ exports = module.exports = function(mongoose) {
             type: String,
             validate: [
                 function(password) {
-                    return password && password.length > 6;
+                    return password && password.length > 3;
                 }, 'Password should be longer'
             ]
         },
@@ -31,6 +61,10 @@ exports = module.exports = function(mongoose) {
             type: String,
             required: 'Provider is required'
         },
+        urlimg: {
+            type: String,
+            default: 'img/avatars/usuario.jpg'
+        },
         providerData: {},
         created: {
             type: Date,
@@ -40,7 +74,9 @@ exports = module.exports = function(mongoose) {
             type: Array,
             default: ['all']
         },
-
+//        grups: [grupo],
+        grups: [],
+        peti: [] // peticiones de amistad
     });
 
 // Hook a pre save method to hash the password
@@ -49,7 +85,11 @@ exports = module.exports = function(mongoose) {
             this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
             this.password = this.hashPassword(this.password);
         }
-
+        this.grups = [{
+                open: true,
+                users: [],
+                name: "Contacts"
+            }]
         next();
     });
 

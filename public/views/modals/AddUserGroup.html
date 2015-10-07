@@ -1,0 +1,84 @@
+<!--
+<div class="modal-header">
+    <h4 class="modal-title">I'm a modal!</h4>
+</div>
+-->
+<div class="modal-body" ng-init=foundUserFilter("")>
+
+    <tabset justified="true">
+        <tab heading="Adicionar un usuario">
+            <div class="input-group">
+                <input class="form-control" type="text" ng-model="filteruser" placeholder="Filtro de usuario" ng-keyup="foundFilterUser(filteruser)">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Adicionar a grupo <span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                        <li ng-repeat="grupo in user.grups">
+                            <a ng-click="addUserGroup(grupo)">{{ grupo.name }}</a>
+                        </li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div>
+            <div style="height: 350px; overflow: auto; overflow-x:hidden; ">
+                <div class="row">
+                    <!--toggle-class="userSelected"-->
+                    <div class="col-md-6 well well-sm" ng-repeat="item in items | pagination: curPage * pageSize | limitTo: pageSize" style=" margin-bottom: 2px !important" >
+                        <div class="media" ng-click="selectedUser(item)"  ng-class="userSelected[item.username] ? 'userSelected' : ''">  
+                            <a class="pull-left">
+                                <img style="width: 64px; height: 64px;" class="media-object img-circle" src="{{ item.urlimg }}">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ item.username }}</h4>
+                                fdgdfg
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <ul class="pager">
+                <li class="previous"><button type="button" class="btn btn-primary" ng-disabled="curPage == 0"
+                                ng-click="curPage=curPage-1"> &lt; PREV</button></li>
+                <li class="center">  <span>Page {{curPage + 1}} of {{ numberOfPages() }}</span></li>
+                <li class="next"><button type="button" class="btn btn-primary"
+                                ng-disabled="curPage >= items.length/pageSize - 1"
+                                ng-click="curPage = curPage+1">NEXT &gt;</button></li>
+            </ul>
+        </tab>
+        <tab heading="Peticiones de amistad" active>
+            <div style="height: {{ scroll-30 }}px; overflow: auto; overflow-x:hidden; ">
+                <div class="row">
+                    <!--toggle-class="userSelected"-->
+                    <div class="col-md-6 well well-sm" ng-repeat="peti in user.peti" style=" margin-bottom: 2px !important" >
+                        <div class="media">  
+                            <a class="pull-left">
+                                <img style="width: 64px; height: 64px;" class="media-object img-circle" src="{{ peti.urlimg }}">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ peti.username }}</h4>                                
+                            </div>
+                            <div class="btn-group" style="position:absolute">
+                                <button type="button" class="btn btn-default" ng-click=" cancelPeti(peti)">Cancelar</button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        Aceptar
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li ng-repeat="grupo in user.grups">
+                                            <a ng-click="addUserGroupPeti(grupo,peti)">{{ grupo.name }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </tab>
+    </tabset>
+
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

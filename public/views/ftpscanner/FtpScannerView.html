@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h3 class="modal-title">Escaneando FTP</h3>
+</div>
+<div class="modal-body" >
+    <a>Numero de archivos <span class="badge">{{ numFiles }}</span></a>
+
+    <ul class="list-group" style="overflow: auto;height: 300px;" id="logScanner">
+        <li class="list-group-item logscanner" ng-repeat="dir in logScanner"><p>{{ dir }}</p></li>
+    </ul>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

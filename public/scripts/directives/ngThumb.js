@@ -4,7 +4,7 @@
 angular
 
 
-    .module('myapp')
+    .module(AppName)
 
 
     // Angular File Upload module does not include this directive
@@ -60,3 +60,4 @@ angular
             }
         };
     }]);
+

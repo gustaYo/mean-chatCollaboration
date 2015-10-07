@@ -7,7 +7,7 @@
  * # Todo
  * Factory in the emailANGULAR.  GUstavo Crespo Sanchez gcrespo@uci.cu
  */
-angular.module('myapp')
+angular.module('Module.email')
         .factory('Email', function($resource, $stateParams) {
             var emails = $resource('email/api/:entryId', {}, {
                 query: {method: 'GET', params: {entryId: '@entryId'}, isArray: true},

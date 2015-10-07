@@ -11,7 +11,7 @@ module.exports = function(app, express, controllers) {
     user.route('/signin').post(users.signin);
     user.route('/signout').get(users.signout);
     user.route('/filter_user/:filter').get(users.filter_user);
-    user.route('/getusers').get(users.getAllUsers);
+    user.route('/getusers/:parms').get(users.getAllUsers);
     // Setting the facebook oauth routes
     user.route('/facebook').get(passport.authenticate('facebook', {
         scope: ['email']

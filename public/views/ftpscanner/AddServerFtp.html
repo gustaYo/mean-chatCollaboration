@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h3 class="modal-title">Adicionando FTP</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="Nombre11" class="col-lg-2 control-label">Nombre</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="Nombre11" placeholder="Nombre" ng-model="ftp.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="User11" class="col-lg-2 control-label">User</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="User11" placeholder="User" ng-model="ftp.user">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="inputPassword1" placeholder="Password" ng-model="ftp.pass">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Direccion11" class="col-lg-2 control-label">Direccion</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="Direccion11" placeholder="uri" ng-model="ftp.uri">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dirscan11" class="col-lg-2 control-label">dirscan</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="dirscan11" placeholder="dirscan" ng-model="ftp.dirscan">
+            </div>
+        </div>      
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

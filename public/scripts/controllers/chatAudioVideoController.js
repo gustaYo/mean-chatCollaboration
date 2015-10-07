@@ -1,4 +1,4 @@
-angular.module('uiRouter.chat')
+angular.module('Module.chat')
 .controller('chatAudioVideoController', chatAudioVideoController);
 
 function chatAudioVideoController($scope, $stateParams,$location,$timeout,Authentication) {

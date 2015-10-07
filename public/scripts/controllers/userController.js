@@ -7,7 +7,7 @@
  * # userController
  * Controller of the myApp
  */
-angular.module('myapp').controller('userController', userController);
+angular.module('Module.user').controller('userController', userController);
 function userController($scope, $window, $http, $location, Authentication) {
     $scope.authentication = Authentication;
     //If user is signed in then redirect back home
